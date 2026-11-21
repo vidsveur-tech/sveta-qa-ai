@@ -1,0 +1,39 @@
+# Local project notes (do not push)
+REPO_INFO.md
+
+# Secrets & environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+allure-results/
+allure-report/
+
+# Node / JS
+node_modules/
+dist/
+build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
