@@ -8,4 +8,4 @@
 
 | # | Тема | Код | Видео |
 |---|------|-----|-------|
-| 01 | *(скоро появится первый ролик)* | — | — |
+| 01 | Бот уведомлений из Jira в Telegram (GitHub Actions) | [jira-telegram-notifier](./jira-telegram-notifier) | *(скоро)* |

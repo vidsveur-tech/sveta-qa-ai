@@ -1,0 +1,54 @@
+name: Jira Telegram Notifier
+
+on:
+  schedule:
+    # Расписание в формате cron (время указывается в UTC!)
+    # По умолчанию: каждый час с 9:00 до 18:00 UTC по будням (пн–пт)
+    # 24/7 каждый час: "0 * * * *"
+    # Каждый день с 9 до 18 UTC: "0 9-18 * * *"
+    - cron: "0 9-18 * * 1-5"
+  workflow_dispatch: # Кнопка ручного запуска в интерфейсе GitHub Actions
+
+permissions:
+  # Права на запись нужны, чтобы бот мог сохранять обновлённый state.json в репозиторий
+  contents: write
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачать код репозитория
+        uses: actions/checkout@v4
+
+      - name: Установить Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Установить зависимости
+        run: pip install requests
+
+      - name: Проверить обновления и комментарии в Jira
+        env:
+          # Укажи адрес своей Jira (без слэша в конце) и ключ проекта
+          JIRA_URL: https://your-jira.example.com
+          JIRA_PROJECT: YOUR_PROJECT
+
+          # Секреты из Settings → Secrets and variables → Actions
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          JIRA_USER: ${{ secrets.JIRA_USER }}
+          JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
+          JIRA_IGNORE_USER: ${{ secrets.JIRA_IGNORE_USER }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python notifier.py
+
+      - name: Сохранить state.json в репозиторий
+        run: |
+          if [[ -n $(git status --porcelain state.json) ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update state [skip ci]"
+            git push
+          fi
