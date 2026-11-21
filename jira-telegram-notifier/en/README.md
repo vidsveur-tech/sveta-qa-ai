@@ -20,8 +20,8 @@ A free, serverless Python + GitHub Actions bot that checks your Jira project on 
    - `TG_BOT_TOKEN` — Telegram bot token
    - `TG_CHAT_ID` — your chat ID
    - Jira authentication *(choose one)*:
-     - **Jira Server / Data Center:** `JIRA_TOKEN` (Personal Access Token) **or** `JIRA_USER` + `JIRA_PASSWORD`
-     - **Jira Cloud:** `JIRA_USER` (your Atlassian email) + `JIRA_PASSWORD` (Atlassian API Token)
+     - **Jira Server / Data Center:** `JIRA_TOKEN` (Personal Access Token, sent as `Bearer`) **or** `JIRA_USER` + `JIRA_PASSWORD`
+     - **Jira Cloud:** `JIRA_USER` (your Atlassian email) + `JIRA_PASSWORD` (Atlassian API Token — Jira Cloud disables regular passwords for REST API, so the API token is passed as the password in Basic Auth)
    - `JIRA_IGNORE_USER` *(optional)* — your Jira `username`, email, or `displayName` to ignore your own actions.
 4. **First run:** open **Actions → Jira Telegram Notifier → Run workflow**.
    - The bot will automatically create `state.json` (recording the current baseline IDs so it doesn't spam old issues) and send a startup confirmation to Telegram. After that, it runs automatically on schedule.

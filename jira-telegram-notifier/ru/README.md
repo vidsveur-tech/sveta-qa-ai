@@ -20,8 +20,8 @@
    - `TG_BOT_TOKEN` — токен Telegram-бота
    - `TG_CHAT_ID` — ID чата
    - Авторизация в Jira *(выбери один из вариантов)*:
-     - **Jira Server / Data Center:** `JIRA_TOKEN` (Personal Access Token) **или** `JIRA_USER` + `JIRA_PASSWORD`
-     - **Jira Cloud:** `JIRA_USER` (твой email в Atlassian) + `JIRA_PASSWORD` (API Token из настроек аккаунта Atlassian)
+     - **Jira Server / Data Center:** `JIRA_TOKEN` (Personal Access Token, передаётся как `Bearer`) **или** `JIRA_USER` + `JIRA_PASSWORD`
+     - **Jira Cloud:** `JIRA_USER` (твой email в Atlassian) + `JIRA_PASSWORD` (API Token из настроек аккаунта Atlassian — в Jira Cloud вход в API по обычному паролю отключён, поэтому в Basic Auth вместо пароля передаётся API-токен)
    - `JIRA_IGNORE_USER` *(опционально)* — твой `username`, email или `displayName` в Jira, чтобы не получать уведомления о собственных действиях.
 4. **Первый запуск:** зайди в **Actions → Jira Telegram Notifier → Run workflow**.
    - Бот сам создаст `state.json` (зафиксирует текущие ID, чтобы не спамить старыми задачами) и пришлёт в Telegram подтверждение запуска. Дальше будет работать автоматически по расписанию.

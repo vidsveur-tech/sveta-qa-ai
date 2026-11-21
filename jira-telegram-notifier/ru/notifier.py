@@ -47,9 +47,10 @@ TRACKED_FIELDS = {
 def jira_headers_and_auth() -> tuple[dict[str, str], tuple[str, str] | None]:
     """
     Возвращает способ авторизации в Jira:
-    - Bearer PAT (JIRA_TOKEN) — удобно для Jira Server / Data Center
-    - Basic Auth (JIRA_USER + JIRA_PASSWORD) — для Jira Cloud (email + API Token)
-      или обычного логина/пароля
+    - Bearer PAT (JIRA_TOKEN) — для Jira Server / Data Center
+    - Basic Auth (JIRA_USER + JIRA_PASSWORD) — для Jira Cloud (email + API Token,
+      т.к. обычный пароль в REST API отключён и токен передаётся в поле пароля)
+      или обычного логина/пароля на Server/DC
     """
     token = os.environ.get("JIRA_TOKEN", "").strip()
     if token:
