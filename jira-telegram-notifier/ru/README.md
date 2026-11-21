@@ -13,7 +13,8 @@
 
 1. **Создай Telegram-бота:**
    - Напиши `@BotFather` → `/newbot` → сохрани токен (`TG_BOT_TOKEN`).
-   - Напиши своему боту `/start` и узнай свой `TG_CHAT_ID` (например, через `@userinfobot`).
+   - Открой своего нового бота и нажми `/start` (иначе бот не сможет тебе писать).
+   - Узнай свой `TG_CHAT_ID` (например, напиши `@userinfobot`).
 2. **Создай приватный репозиторий на GitHub** и скопируй туда всё из этой папки (`notifier.py` и `.github/workflows/jira_notify.yml`).
    - В файле `.github/workflows/jira_notify.yml` укажи свои `JIRA_URL` и `JIRA_PROJECT`.
 3. **Добавь секреты** в `Settings → Secrets and variables → Actions → New repository secret`:

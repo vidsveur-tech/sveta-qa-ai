@@ -13,7 +13,8 @@ A free, serverless Python + GitHub Actions bot that checks your Jira project on 
 
 1. **Create a Telegram bot:**
    - Message `@BotFather` → `/newbot` → save the token (`TG_BOT_TOKEN`).
-   - Send `/start` to your new bot and get your `TG_CHAT_ID` (for example, via `@userinfobot`).
+   - Open your new bot and send `/start` (otherwise the bot won't be able to message you).
+   - Get your `TG_CHAT_ID` (for example, by messaging `@userinfobot`).
 2. **Create a private GitHub repository** and copy all files from this folder (`notifier.py` and `.github/workflows/jira_notify.yml`).
    - Edit `.github/workflows/jira_notify.yml` and set your `JIRA_URL` and `JIRA_PROJECT`.
 3. **Add repository secrets** under `Settings → Secrets and variables → Actions → New repository secret`:
